@@ -1,0 +1,70 @@
+%! TeX program = lualatex
+\documentclass[a4paper, 14pt]{article}
+\usepackage{fontspec}
+\usepackage[14pt]{extsizes}
+\usepackage[utf8x]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{setspace}
+\usepackage{indentfirst}
+
+\setlength{\parindent}{12.5mm}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{pdflscape}
+\usepackage{geometry}
+\geometry{top=2cm}
+\geometry{right=1cm}
+\geometry{left=3cm}
+\geometry{bottom=2cm}
+\setmainfont{Times New Roman}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{xlop}
+\usepackage{amsmath}
+\date{}
+
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{etoolbox}
+\AtBeginEnvironment{tabular}{\noindent}
+
+\usepackage{xfp}
+\usepackage{siunitx}
+\usepackage{etoolbox}
+\usepackage{subcaption}
+\usepackage{float}
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{etuphyspreparation}
+
+\begin{document}
+
+\labpreparation{number=0,labname=Название работы,myname=Иванов Иван Иванович,group=4308,faculty=Ф\ldots,professor=Григорьев Григорий Григорьевич,year=2024}{
+  Цель работы
+} {
+  Краткое описание
+  \newpage
+} {
+  Основные закономерности
+} {
+  \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|} \hline
+       & 1 & 2 & 3 & 4 & 5 \\ \hline
+      $Q_1$ &  &  &  &  &  \\ \hline
+      $Q_2$ &  &  &  &  &  \\ \hline
+      $Q_3$ &  &  &  &  &  \\ \hline
+    \end{tabular}
+  \end{center}
+  % \vspace{3cm}
+} {
+  \begin{center}
+    \setlength{\tabcolsep}{10pt}\large
+    \begin{tabular}{|c|c|c|c|c|} \hline
+      $q_1$ & $q_2$ & $q_3$ & $q_4$ & $q_5$ \\ \hline
+      & & & & \\ \hline
+    \end{tabular}
+  \end{center}
+} {1}
+\end{document}

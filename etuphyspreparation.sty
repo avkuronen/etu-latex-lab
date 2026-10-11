@@ -1,0 +1,208 @@
+\usepackage{pgfkeys}
+
+% МАКРОСЫ ДЛЯ ОБРАБОТКИ ДАННЫХ
+
+
+\newcommand{\displaymeasurings}[8]{
+  \makecell{$#1_i$} &  #2 &  #3 &  #4 &  #5 & #6 & \\ \hline
+  $\theta_{#1i}$ & #8 & #8 & #8  & #8  & #8 & \makecell{$\theta_#1=\max\theta_{#1i}=$ \\ #8 {#7}} \\ \hline
+}
+
+
+\newcommand{\rudefailedmeasurings}[7] {
+  \begin{gather}
+    \begin{cases}
+      \ifx#7U
+        |#1_1-#1_2|<#7_{P,N}R_#1 \\
+        |#1_5-#1_4|<#7_{P,N}R_#1
+      \else
+        |#1_1-\overline#1|<#7_{P,N}S_#1 \\
+        |#1_5-\overline#1|<#7_{P,N}S_#1
+      \fi
+    \end{cases};\; \begin{cases}
+    \ifx#7U
+      \fpeval{#2-#3}<0.64\cdot#6=\fpeval{0.64*#6}\\
+      \fpeval{#4-#5}<0.64\cdot#6=\fpeval{0.64*#6}
+    \else
+      \fpeval{abs(#3-#2)}<1.67\cdot#6=\fpeval{1.67*#6}\\
+      \fpeval{abs(#4-#2)}<1.67\cdot#6=\fpeval{1.67*#6}
+    \fi
+    \end{cases} \notag
+  \end{gather}
+}
+
+
+
+
+\newcommand{\formularef}[1] {
+  \hyperref[eq:f#1]{(#1)}
+}
+
+% МАКРОСЫ ДЛЯ ОФОРМЛЕНИЯ
+
+
+\newcommand{\mytitlepage}[6] {
+\begin{titlepage}
+    \newpage
+    
+    \begin{center}
+    
+    {Федеральное государственное автономное образовательное учреждение\\
+    высшего образования «Санкт-Петербургский государственный\\
+    электротехнический университет «ЛЭТИ»\\
+    им. В.И. Ульянова (Ленина)»\\}
+    
+
+    \vspace{0.25cm}
+    \end{center}
+    \begin{flushright}
+    	\begin{center}
+    		кафедра физики
+    	\end{center}
+    \end{flushright}  
+    
+
+    \vspace{5cm}
+
+    \begin{center}
+    {\fontsize{20pt}{23pt}\selectfont
+    \bfseries
+    \setlength{\baselineskip}{23pt}
+    \strut{ОТЧЕТ}\linebreak
+    \strut{по лабораторной работе №#1}\linebreak
+    \strut{<<#2>>}\linebreak
+    }
+    \end{center}
+
+    % \vspace{3cm}
+    \hspace*{\parindent}
+
+    \begin{tabular}{ll}
+      Выполнил:&#3 \\
+      Группа №&#4 \\ \\
+      Преподаватель:&#5
+    \end{tabular}
+
+    \vspace{1cm}
+    % \hspace*{\parindent}
+
+\setlength{\tabcolsep}{20pt}
+\begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    \multicolumn{2}{|c|}{Вопросы}
+        & \multicolumn{2}{c|}{\multirow{2}{*}{\makecell{Даты \\ коллоквиума}}}
+        & \multicolumn{2}{c|}{\multirow{2}{*}{Итог}}
+    \\ \cline{1-2}
+
+    % Вторая строка заголовка:
+        &
+        & \multicolumn{2}{c|}{}
+        & \multicolumn{2}{c|}{}
+    \\ \hline
+
+    % Первая строка данных
+    \multirow{4}{*}{}
+        & \multirow{4}{*}{}
+        & \multicolumn{2}{c|}{}
+          & \multicolumn{2}{c|}{}
+    \\ \cline{3-4}
+
+    % Вторая строка данных
+    & & \multicolumn{2}{c|}{} & \multicolumn{2}{c|}{} \\ \cline{3-4}
+
+    % Третья строка данных
+    & & \multicolumn{2}{c|}{} & \multicolumn{2}{c|}{} \\ \cline{3-4}
+
+    % Четвёртая строка данных
+    & & \multicolumn{2}{c|}{} & \multicolumn{2}{c|}{} \\ \cline{3-4}
+
+    % Пятая строка данных
+    & & \multicolumn{2}{c|}{} & \multicolumn{2}{c|}{} \\ \hline
+\end{tabular}
+
+    \vfill
+    
+    \centering Санкт-Петербург \\ #6
+
+\end{titlepage}
+}
+
+\newcommand{\labprotocol}[7] {
+  \begin{center}
+    {\fontsize{14pt}{17pt}\selectfont
+      \bfseries\large
+      \setlength{\baselineskip}{17pt}
+      \strut{ПРОТОКОЛ НАБЛЮДЕНИЙ} \linebreak
+      \strut{ЛАБОРАТОРНАЯ РАБОТА №#1} \linebreak
+      \strut{#2}
+    }
+  \end{center}
+
+  #3
+
+  \begin{flushright}
+    \underline{Экспериментальный макет}
+  \end{flushright}
+
+  #4
+
+  \vfill
+  \begin{tabular}{ll}
+    Выполнил:&~~~\underline{#5} \\ \\
+    &Факультет #6 \\ \\
+    &Группа № #7
+  \end{tabular}
+
+  \vspace{1cm}
+
+  \begin{tabular}{l}
+    <<\_\_>> \_\_\_\_\_\_ \_\_\_\_ \\ \\
+    Преподаватель: \_\_\_\_\_\_\_\_\_\_\_\_ \\ \\
+  \end{tabular}
+}
+
+
+\newcommand{\labsection}[1] {
+  \section*{\large #1}
+}
+
+
+
+\pgfkeys{
+  /labpreparation/.is family,
+  /labpreparation/number/.store in=\labpreparationNumber,
+  /labpreparation/labname/.store in=\labpreparationLabname,
+  /labpreparation/myname/.store in=\labpreparationMyname,
+  /labpreparation/group/.store in=\labpreparationGroup,
+  /labpreparation/professor/.store in=\labpreparationProfessor,
+  /labpreparation/year/.store in=\labpreparationYear,
+  /labpreparation/faculty/.store in=\labpreparationFaculty,
+  /labpreparation/show/.store in=\labpreparationShow%
+}
+
+
+
+\newcommand{\labpreparation}[7] {
+  \ifx#71
+    \pgfkeys{/labpreparation, #1}
+    \mytitlepage{\labpreparationNumber}{\labpreparationLabname}{\labpreparationMyname}{\labpreparationGroup}{\labpreparationProfessor}{\labpreparationYear}
+    \newpage
+    \begin{center}
+      \bfseries\large ЛАБОРАТОРНАЯ РАБОТА №\labpreparationNumber\linebreak
+      \labpreparationLabname%
+    \end{center}
+
+    \labsection{ЦЕЛЬ РАБОТЫ}
+    #2
+
+    \labsection{СХЕМА УСТАНОВКИ И ИСПОЛЬЗУЕМЫЕ ПРИБОРЫ}
+    #3
+
+    \labsection{ОСНОВНЫЕ ЗАКОНОМЕРНОСТИ}
+    #4
+    \newpage
+    \labprotocol{\labpreparationNumber}{\labpreparationLabname}{#5}{#6}{\labpreparationMyname}{\labpreparationFaculty}{\labpreparationGroup}
+  \fi
+}
+
+
