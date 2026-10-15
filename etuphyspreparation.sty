@@ -2,38 +2,6 @@
 
 % МАКРОСЫ ДЛЯ ОБРАБОТКИ ДАННЫХ
 
-
-\newcommand{\displaymeasurings}[8]{
-  \makecell{$#1_i$} &  #2 &  #3 &  #4 &  #5 & #6 & \\ \hline
-  $\theta_{#1i}$ & #8 & #8 & #8  & #8  & #8 & \makecell{$\theta_#1=\max\theta_{#1i}=$ \\ #8 {#7}} \\ \hline
-}
-
-
-\newcommand{\rudefailedmeasurings}[7] {
-  \begin{gather}
-    \begin{cases}
-      \ifx#7U
-        |#1_1-#1_2|<#7_{P,N}R_#1 \\
-        |#1_5-#1_4|<#7_{P,N}R_#1
-      \else
-        |#1_1-\overline#1|<#7_{P,N}S_#1 \\
-        |#1_5-\overline#1|<#7_{P,N}S_#1
-      \fi
-    \end{cases};\; \begin{cases}
-    \ifx#7U
-      \fpeval{#2-#3}<0.64\cdot#6=\fpeval{0.64*#6}\\
-      \fpeval{#4-#5}<0.64\cdot#6=\fpeval{0.64*#6}
-    \else
-      \fpeval{abs(#3-#2)}<1.67\cdot#6=\fpeval{1.67*#6}\\
-      \fpeval{abs(#4-#2)}<1.67\cdot#6=\fpeval{1.67*#6}
-    \fi
-    \end{cases} \notag
-  \end{gather}
-}
-
-
-
-
 \newcommand{\formularef}[1] {
   \hyperref[eq:f#1]{(#1)}
 }
@@ -159,6 +127,7 @@
     <<\_\_>> \_\_\_\_\_\_ \_\_\_\_ \\ \\
     Преподаватель: \_\_\_\_\_\_\_\_\_\_\_\_ \\ \\
   \end{tabular}
+  \newpage
 }
 
 
@@ -204,5 +173,3 @@
     \labprotocol{\labpreparationNumber}{\labpreparationLabname}{#5}{#6}{\labpreparationMyname}{\labpreparationFaculty}{\labpreparationGroup}
   \fi
 }
-
-
