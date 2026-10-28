@@ -2,6 +2,13 @@
 
 % МАКРОСЫ ДЛЯ ОБРАБОТКИ ДАННЫХ
 
+\newcommand{\setcsname}[2] {
+  \expandafter\gdef\csname #1\endcsname{#2}
+}
+\newcommand{\getcsname}[1] {
+  \csname #1\endcsname
+}
+
 \newcommand{\formularef}[1] {
   \hyperref[eq:f#1]{(#1)}
 }
@@ -131,11 +138,9 @@
 }
 
 
-\newcommand{\labsection}[1] {
-  \section*{\large #1}
+\newcommand{\labsection}[2] {
+  \section*{#2 #1}
 }
-
-
 
 \pgfkeys{
   /labpreparation/.is family,
@@ -149,8 +154,6 @@
   /labpreparation/show/.store in=\labpreparationShow%
 }
 
-
-
 \newcommand{\labpreparation}[7] {
   \ifx#71
     \pgfkeys{/labpreparation, #1}
@@ -161,13 +164,13 @@
       \labpreparationLabname%
     \end{center}
 
-    \labsection{ЦЕЛЬ РАБОТЫ}
+    \labsection{ЦЕЛЬ РАБОТЫ}{\large}
     #2
 
-    \labsection{СХЕМА УСТАНОВКИ И ИСПОЛЬЗУЕМЫЕ ПРИБОРЫ}
+    \labsection{СХЕМА УСТАНОВКИ И ИСПОЛЬЗУЕМЫЕ ПРИБОРЫ}{\large}
     #3
 
-    \labsection{ОСНОВНЫЕ ЗАКОНОМЕРНОСТИ}
+    \labsection{ОСНОВНЫЕ ЗАКОНОМЕРНОСТИ}{\large}
     #4
     \newpage
     \labprotocol{\labpreparationNumber}{\labpreparationLabname}{#5}{#6}{\labpreparationMyname}{\labpreparationFaculty}{\labpreparationGroup}
